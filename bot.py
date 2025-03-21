@@ -43,7 +43,7 @@ async def main():
     await app.start()
     print(f"Bot avviato, ascoltando su porta {PORT}")
 
-     try:
+    try:
         await app.updater.start_polling()
         print(f"Bot avviato, ascoltando su porta {PORT}")
     except telegram.error.Conflict:
