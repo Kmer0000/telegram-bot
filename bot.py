@@ -22,7 +22,7 @@ async def invia_sondaggio(context):
         message_id=poll_message.message_id,
         disable_notification=False
     )
-print(f"Sondaggio inviato e pinnato a {CHAT_ID}")
+    print(f"Sondaggio inviato e pinnato a {CHAT_ID}")
 
 async def health_check(request):
     return web.Response(text="Bot is alive")
@@ -45,7 +45,6 @@ async def main():
 
     try:
         await app.updater.start_polling()
-        print(f"Bot avviato, ascoltando su porta {PORT}")
     except telegram.error.Conflict:
         print("Conflitto rilevato. Fermando il bot.")
         await app.stop()
