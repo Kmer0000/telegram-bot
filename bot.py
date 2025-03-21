@@ -1,5 +1,5 @@
 import os
-from telegram.ext import ApplicationBuilder
+from telegram.ext import ApplicationBuilder, ContextTypes
 import datetime
 
 TOKEN = os.getenv("TOKEN", "7928038935:AAHKS23g8AarVYlb64qYI-z9zfpQdgD3czE")
@@ -22,7 +22,7 @@ async def invia_sondaggio(context):
 def main():
     app = ApplicationBuilder().token(TOKEN).build()
 
-    ora_invio = datetime.time(9, 0)
+    ora_invio = time (hour=9, minute=0)
 
     app.job_queue.run_daily(invia_sondaggio, ora_invio)
 
