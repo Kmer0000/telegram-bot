@@ -21,11 +21,7 @@ async def invia_sondaggio(context):
 
 def main():
     app = ApplicationBuilder().token(TOKEN).build()
-
-    ora_invio = datetime.time(hour=9, minute=0)
-
-    app.job_queue.run_daily(invia_sondaggio, ora_invio)
-
+    app.job_queue.run_once(invia_sondaggio, when=10)
     app.run_polling()
 
 if __name__ == "__main__":
