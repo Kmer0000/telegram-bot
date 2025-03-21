@@ -2,7 +2,7 @@ from telegram.ext import ApplicationBuilder
 import datetime
 
 TOKEN = "7928038935:AAHKS23g8AarVYlb64qYI-z9zfpQdgD3czE"
-CHAT_ID = "-1002556426331"
+CHAT_ID = "-1002038009783"
 
 async def invia_sondaggio(context):
     poll_message = await context.bot.send_poll(
