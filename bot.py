@@ -3,6 +3,7 @@ from telegram.ext import ApplicationBuilder, ContextTypes
 from datetime import time
 import asyncio
 from aiohttp import web
+import telegram.error
 
 TOKEN = os.getenv("TOKEN", "7928038935:AAHKS23g8AarVYlb64qYI-z9zfpQdgD3czE")
 CHAT_ID = "-1002038009783"
@@ -40,9 +41,16 @@ async def main():
 
     await app.initialize()
     await app.start()
-    await app.updater.start_polling()
     print(f"Bot avviato, ascoltando su porta {PORT}")
 
+     try:
+        await app.updater.start_polling()
+        print(f"Bot avviato, ascoltando su porta {PORT}")
+    except telegram.error.Conflict:
+        print("Conflitto rilevato. Fermando il bot.")
+        await app.stop()
+        return 
+        
     while True:
         await asyncio.sleep(3600)
 
