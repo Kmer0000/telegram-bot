@@ -21,13 +21,14 @@ async def invia_sondaggio(context):
         message_id=poll_message.message_id,
         disable_notification=False
     )
+print(f"Sondaggio inviato e pinnato a {CHAT_ID}")
 
 async def health_check(request):
     return web.Response(text="Bot is alive")
     
 async def main():
     app = ApplicationBuilder().token(TOKEN).build()
-    ora_invio = from datetime import time(hour=9, minute=0)
+    ora_invio = time(hour=9, minute=0)
     app.job_queue.run_daily(invia_sondaggio, ora_invio)
 
     web_app = web.Application()
