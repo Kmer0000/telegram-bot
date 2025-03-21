@@ -30,7 +30,7 @@ async def main():
     ora_invio = datetime.time(hour=9, minute=0)
     app.job_queue.run_daily(invia_sondaggio, ora_invio)
 
-web_app = web.Application()
+    web_app = web.Application()
     web_app.add_routes([web.get('/', health_check)])
     runner = web.AppRunner(web_app)
     await runner.setup()
